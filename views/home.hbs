@@ -1,0 +1,25 @@
+{{#each blogs}}
+<div class="card">
+    <div class="card__header">
+        <a href="/blogs/{{this.slug}}">
+            <img src="https://source.unsplash.com/600x400/?computer" alt="card__image" class="card__image">
+        </a>
+    </div>
+    <div class="card__body">
+        <span class="tag tag-blue">{{this.tag}}</span>
+        <a href="/blogs/{{this.slug}}">
+            <h4>{{this.title}}</h4>
+            <p>{{this.description}}</p>
+        </a>
+    </div>
+    <div class="card__footer">
+        <div class="user">
+            <img src="https://i.pravatar.cc/40?img=1" alt="user__image" class="user__image">
+            <div class="user__info">
+                <h5>{{this.author}}</h5>
+                <small>{{format_date this.update_at}}</small>
+            </div>
+        </div>
+    </div>
+</div>
+{{/each}}

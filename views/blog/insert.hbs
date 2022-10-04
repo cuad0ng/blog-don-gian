@@ -1,0 +1,25 @@
+<div class="blog">
+    <form action="/blogs/insert" method="POST">
+        <div class="text-field">
+            <label for="title">Title*</label>
+            <input type="text" id="title" name="title" placeholder="Enter title" required/>
+        </div>
+        <div class="text-field">
+            <label for="description">Description*</label>
+            <input type="text" id="description" name="description" placeholder="Enter description" required/>
+        </div>
+        <div class="text-field">
+            <label for="author">Author*</label>
+            <input type="text" id="author" name="author" placeholder="Enter author" required/>
+        </div>
+        <div class="text-field">
+            <label for="tag">Tag*</label>
+            <input type="text" id="tag" name="tag" placeholder="Enter tag" required/>
+        </div>
+        <div class="text-field">
+            <label for="content">Content*</label>
+            <textarea type="text" id="content" name="content" placeholder="Enter content" required></textarea>
+        </div>
+        <button type="submit">POST</button>
+    </form>
+</div>

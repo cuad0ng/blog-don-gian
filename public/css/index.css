@@ -1,0 +1,395 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  background: #7f7fd5;
+  background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
+}
+
+#blurry-filter {
+  width: 100%;
+  height: 9rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4' numOctaves='1'/%3E%3C/filter%3E%3Crect width='100' height='100' style='filter:url(%23f)' opacity='.2'/%3E%3C/svg%3E");
+  mask: linear-gradient(black 7rem, transparent);
+  -webkit-mask: linear-gradient(black 7rem, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  pointer-events: none;
+  touch-action: none;
+}
+
+header {
+  width: 100%;
+  height: 8rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+header>div {
+  width: calc(100% - 3rem);
+  max-width: 1200px;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+#title {
+  width: 100%;
+}
+
+#title .parent {
+  line-height: 1em;
+  color: #666;
+}
+
+#title .name {
+  font-size: 2em;
+  font-weight: bold;
+  color: #333;
+  mix-blend-mode: difference;
+}
+
+#reference {
+  display: flex;
+}
+
+#reference>a {
+  color: #444;
+}
+
+#reference>a+a {
+  margin-left: 1rem;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+  margin-block: 2rem;
+  gap: 2rem;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: clamp(20rem, calc(20rem + 2vw), 22rem);
+  overflow: hidden;
+  box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+  border-radius: 1em;
+  background: #ECE9E6;
+  background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+}
+
+.card__body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+
+.tag {
+  align-self: flex-start;
+  padding: .25em .75em;
+  border-radius: 1em;
+  font-size: .75rem;
+}
+
+.tag+.tag {
+  margin-left: .5em;
+}
+
+.tag-blue {
+  background: #56CCF2;
+  background: linear-gradient(to bottom, #2F80ED, #56CCF2);
+  color: #fafafa;
+}
+
+.tag-brown {
+  background: #D1913C;
+  background: linear-gradient(to bottom, #FFD194, #D1913C);
+  color: #fafafa;
+}
+
+.tag-red {
+  background: #cb2d3e;
+  background: linear-gradient(to bottom, #ef473a, #cb2d3e);
+  color: #fafafa;
+}
+
+.card__body h4 {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+
+.card__footer {
+  display: flex;
+  padding: 1rem;
+  margin-top: auto;
+}
+
+.user {
+  display: flex;
+  gap: .5rem;
+}
+
+.user__image {
+  border-radius: 50%;
+}
+
+.user__info>small {
+  color: #666;
+}
+
+.card a {
+  text-decoration: none;
+}
+
+.card a:visited {
+  color: black;
+}
+
+.title {
+  text-align: center;
+}
+
+.detail,
+.blog, .comment {
+  width: 100vw;
+  background: white;
+  padding: 30px;
+  border-radius: 1em;
+}
+
+button {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  font-size: 14px;
+  padding: 4px 8px;
+  color: rgba(0, 0, 0, 0.85);
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+button:hover,
+button:focus,
+button:active {
+  cursor: pointer;
+  background-color: #ecf0f1;
+}
+
+.comment-thread {
+  width: 100%;
+  max-width: 100%;
+  margin: auto;
+  padding: 0 30px;
+  background-color: #fff;
+  border: 1px solid transparent;
+  /* Removes margin collapse */
+  border-radius: 1em;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Comment */
+
+.comment {
+  position: relative;
+  margin: 20px auto;
+}
+
+.comment-heading {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  font-size: 14px;
+}
+
+.comment-voting {
+  width: 20px;
+  height: 32px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.comment-voting button {
+  display: block;
+  width: 100%;
+  height: 50%;
+  padding: 0;
+  border: 0;
+  font-size: 10px;
+}
+
+.comment-info {
+  color: rgba(0, 0, 0, 0.5);
+  margin-left: 10px;
+}
+
+.comment-author {
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.comment-author:hover {
+  text-decoration: underline;
+}
+
+.replies {
+  margin-left: 20px;
+}
+
+/* Adjustments for the comment border links */
+
+.comment-border-link {
+  display: block;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 12px;
+  height: calc(100% - 50px);
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  background-color: rgba(0, 0, 0, 0.1);
+  background-clip: padding-box;
+}
+
+.comment-border-link:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.comment-body {
+  padding: 0 20px;
+  padding-left: 28px;
+}
+
+.replies {
+  margin-left: 28px;
+}
+
+/* Adjustments for toggleable comments */
+
+details.comment summary {
+  position: relative;
+  list-style: none;
+  cursor: pointer;
+}
+
+details.comment summary::-webkit-details-marker {
+  display: none;
+}
+
+details.comment:not([open]) .comment-heading {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.comment-heading::after {
+  display: inline-block;
+  position: absolute;
+  right: 5px;
+  align-self: center;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+details.comment[open] .comment-heading::after {
+  content: "Click to hide";
+}
+
+details.comment:not([open]) .comment-heading::after {
+  content: "Click to show";
+}
+
+/* Styling the reply to comment form */
+
+.reply-form textarea {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  resize: vertical;
+  min-height: 2em;
+}
+
+.d-none {
+  display: none;
+}
+
+.text-field {
+  position: relative;
+  margin: 10px 0;
+  min-width: 800px;
+}
+
+.text-field label {
+  display: inline-block;
+  font-weight: 600;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  background-color: white;
+  padding: 1px 5px;
+  font-size: 12px;
+  transform: translateY(-50%);
+  color: #6a5af9;
+}
+
+.text-field input,
+textarea {
+  padding: 15px;
+  display: block;
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid #6a5af9;
+  border-radius: 4px;
+  background-color: transparent;
+  color: black;
+  outline: none;
+}
+
+.text-field textarea {
+  resize: vertical;
+}
+

@@ -1,0 +1,82 @@
+<a href="/blogs/show-insert" class="btn btn-primary">Add</a>
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Content</th>
+                <th scope="col">Author</th>
+                <th scope="col">Slug</th>
+                <th scope="col">Tag</th>
+                <th scope="col">Comment</th>
+                <th scope="col">Create At</th>
+                <th scope="col" colspan="4">Update At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each blogs}}
+            <tr>
+                <th scope="row">{{this.id}}</th>
+                <td class="shorten">{{this.title}}</td>
+                <td class="shorten">{{this.description}}</td>
+                <td class="shorten">{{this.content}}</td>
+                <td class="shorten">{{this.author}}</td>
+                <td class="shorten">{{this.slug}}</td>
+                <td class="shorten">{{this.tag}}</td>
+                <td class="shorten">{{this.comment.length}}</td>
+                <td>{{format_date this.create_at}}</td>
+                <td>{{format_date this.update_at}}</td>
+                <td>
+                    <a href="/blogs/{{this.slug}}" class="btn btn-primary">View</a>
+                </td>
+                <td>
+                    <a href="/blogs/show-update/{{this.id}}" class="btn btn-warning">Edit</a>
+                </td>
+                <td>
+                    <a href="" class="btn btn-danger" data-id="{{this.id}}" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">Remove</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Remove</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure remove this?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="btn-delete-blog" type="button" class="btn btn-danger">OK</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">KO</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form name="blog-delete-form" method="post"></form>
+
+<script>
+    let blog_id
+    const btn_delete_blog = document.getElementById('btn-delete-blog')
+    let delete_form = document.forms['blog-delete-form']
+    const exampleModal = document.getElementById('exampleModal')
+    exampleModal.addEventListener('show.bs.modal', event => {
+        const button = event.relatedTarget
+        blog_id = button.getAttribute('data-id')
+    })
+    btn_delete_blog.onclick = () => {
+        delete_form.action = '/blogs/delete/' + blog_id
+        delete_form.submit()
+    }
+
+</script>

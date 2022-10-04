@@ -1,0 +1,28 @@
+<div class="detail">
+    <div class="user">
+        <img src="https://i.pravatar.cc/40?img=1" alt="user__image" class="user__image">
+        <div class="user__info">
+            <h3>{{blog.author}}</h3>
+            <small>Created: {{format_date blog.create_at}}</small>
+            <small> - Updated: {{format_date blog.update_at}}</small>
+        </div>
+    </div>
+
+    <div class="title">
+        <h1>{{blog.title}}</h1>
+    </div>
+    <div class="content">
+        <p>{{blog.content}}</p>
+    </div>
+</div>
+
+<div class="comment">
+    {{#each blog.comment}}
+    <p>{{this}}</p>
+    {{/each}}
+    <form action="/blogs/add-comment/{{blog.slug}}" method="post">
+        <textarea name="comment" style="min-height: 72px;" type="text" class="input" placeholder="Write a comment" required></textarea>
+        <button style="margin-top: 10px;" class='btn btn-primary' type="submit">Add Comment</button>
+    </form>
+
+</div>
